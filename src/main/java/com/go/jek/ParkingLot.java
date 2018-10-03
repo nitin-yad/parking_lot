@@ -1,34 +1,20 @@
 package com.go.jek;
 
-import com.go.jek.constants.AppConstants;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import com.go.jek.constants.ServiceType;
+import com.go.jek.dtos.Input;
+import com.go.jek.impl.InputProcessor;
 
 public class ParkingLot {
 
     public static void main(String[] args){
 
+        InputProcessor commandProcessor = InputProcessor.getInstance();
+        Input input;
         if(args.length > 0){
-            handleFileInput(args[0]);
+            input = new Input(ServiceType.File.getValue(), args[0]);
         }else{
-            provideInteractiveConsole();
+            input = new Input(ServiceType.Console.getValue(), null);
         }
-        try{
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            while(true){
-                String command = br.readLine();
-                if(AppConstants.EXIT.equals(command)){
-                    System.exit(0);
-                }else{
-                    // validate & process command
-                    System.out.println(command);
-                }
-            }
-        }catch(IOException e){
-            System.out.println("IOException occurred while reading commands!");
-        }
+        commandProcessor.initialiseHandler(input);
     }
 }

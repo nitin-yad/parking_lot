@@ -8,12 +8,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class ConsoleInputHandler implements InputHandler {
+public class ConsoleInputHandler extends InputHandler {
 
     static{
 
-        InputProcessor inputProcessor = InputProcessor.getInstance();
-        inputProcessor.registerService(ServiceType.Console.getValue(), new ConsoleInputHandler());
+        InputProcessor.getInstance().registerInputHandler(ServiceType.Console.getValue(), new ConsoleInputHandler());
     }
 
     public Boolean isInputValid() {
@@ -32,12 +31,16 @@ public class ConsoleInputHandler implements InputHandler {
                 if(AppConstants.EXIT.equals(command)){
                     System.exit(0);
                 }else{
-                    // validate & process command
-                    System.out.println(command);
+                    CommandProcessor.getInstance().handleRaw(command);
                 }
             }
         }catch(IOException e){
             System.out.println("IOException occurred while reading commands!");
         }
+    }
+
+    public static String getInputType(){
+
+        return ServiceType.Console.getValue();
     }
 }

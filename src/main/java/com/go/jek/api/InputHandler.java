@@ -1,7 +1,7 @@
 package com.go.jek.api;
 
-public interface InputHandler {
+public abstract class InputHandler {
 
-    Boolean isInputValid();
-    void processInput();
+    public abstract Boolean isInputValid();
+    public abstract void processInput();
 }

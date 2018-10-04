@@ -11,6 +11,10 @@ public class InputProcessor {
     private static InputProcessor inputProcessor = new InputProcessor();
     private Map<String, InputHandler> services = new HashMap<String, InputHandler>();
 
+    private InputProcessor(){
+
+    }
+
     static {
 
         try {
@@ -27,19 +31,19 @@ public class InputProcessor {
         return inputProcessor;
     }
 
-    public void registerService(String type, InputHandler inputHandler){
+    public void registerInputHandler(String type, InputHandler inputHandler){
 
         services.put(type, inputHandler);
     }
 
-    public InputHandler getServiceOfType(String type){
+    public InputHandler getInputHandler(String inputType){
 
-        return services.get(type);
+        return services.get(inputType);
     }
 
     public void initialiseHandler(Input input){
 
-        InputHandler inputHandler = getServiceOfType(input.getType());
+        InputHandler inputHandler = getInputHandler(input.getType());
         if(inputHandler.isInputValid()){
             inputHandler.processInput();
         }else{
@@ -47,5 +51,4 @@ public class InputProcessor {
         }
 
     }
-
 }

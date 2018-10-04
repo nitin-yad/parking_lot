@@ -3,12 +3,11 @@ package com.go.jek.impl;
 import com.go.jek.api.InputHandler;
 import com.go.jek.constants.ServiceType;
 
-public class FileInputHandler implements InputHandler {
+public class FileInputHandler extends InputHandler {
 
     static{
 
-        InputProcessor inputProcessor = InputProcessor.getInstance();
-        inputProcessor.registerService(ServiceType.File.getValue(), new FileInputHandler());
+        InputProcessor.getInstance().registerInputHandler(ServiceType.File.getValue(), new FileInputHandler());
     }
 
     public Boolean isInputValid() {

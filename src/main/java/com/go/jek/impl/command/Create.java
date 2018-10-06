@@ -2,9 +2,7 @@ package com.go.jek.impl.command;
 
 import com.go.jek.constants.CommandType;
 import com.go.jek.impl.CommandProcessor;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.go.jek.impl.pl.ParkingHandler;
 
 public class Create extends Command{
 
@@ -12,10 +10,14 @@ public class Create extends Command{
         CommandProcessor.getInstance().registerCommand(CommandType.CREATE.getValue(), new Create());
     }
 
+    ParkingHandler parkingHandler = ParkingHandler.getInstance();
+
     public void processCommand() {
 
         if(this.isValidCommand()){
             handle(this);
+        }else{
+            System.out.println("Arguments are not proper!");
         }
     }
 
@@ -26,6 +28,12 @@ public class Create extends Command{
 
     private void handle(Command command){
 
-        System.out.println(command.command);
+        try{
+            int slotCount = Integer.parseInt(command.args.get(0));
+            parkingHandler.initialiseParkingSpace(slotCount);
+            System.out.println("Created a parking lot with " + slotCount +" slots");
+        }catch (NumberFormatException e){
+            System.out.println("Argument is not a number!");
+        }
     }
 }

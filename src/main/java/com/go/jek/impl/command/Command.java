@@ -14,7 +14,6 @@ public abstract class Command {
         /**
          * this could be populated from config file or database
          */
-        System.out.println("Initializing command details!");
         validationMap.put(CommandType.CREATE.getValue(), 1);
         validationMap.put(CommandType.PARK.getValue(), 2);
         validationMap.put(CommandType.LEAVE.getValue(), 1);
@@ -22,7 +21,6 @@ public abstract class Command {
         validationMap.put(CommandType.SEARCH_RN_WITH_COLOR.getValue(), 1);
         validationMap.put(CommandType.SEARCH_SN_WITH_COLOR.getValue(), 1);
         validationMap.put(CommandType.SEARCH_SN_WITH_RN.getValue(), 1);
-        System.out.println("Command details initialized!");
     }
 
     String command;

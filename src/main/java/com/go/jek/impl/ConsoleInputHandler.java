@@ -3,6 +3,7 @@ package com.go.jek.impl;
 import com.go.jek.api.InputHandler;
 import com.go.jek.constants.AppConstants;
 import com.go.jek.constants.ServiceType;
+import com.go.jek.dtos.Input;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class ConsoleInputHandler extends InputHandler {
         return true;
     }
 
-    public void processInput() {
+    public void processInput(Input input) {
 
         try{
 

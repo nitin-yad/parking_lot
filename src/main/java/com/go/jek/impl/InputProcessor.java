@@ -18,9 +18,8 @@ public class InputProcessor {
     static {
 
         try {
-            System.out.println("Registering service: " + Class.forName(ConsoleInputHandler.class.getName()));
-            System.out.println("Registering service: " + Class.forName(FileInputHandler.class.getName()));
-            System.out.println("Services are successfully registered!");
+            Class.forName(ConsoleInputHandler.class.getName());
+            Class.forName(FileInputHandler.class.getName());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -45,7 +44,7 @@ public class InputProcessor {
 
         InputHandler inputHandler = getInputHandler(input.getType());
         if(inputHandler.isInputValid()){
-            inputHandler.processInput();
+            inputHandler.processInput(input);
         }else{
             System.out.println("Invalid input for the input type: " + input.getType());
         }

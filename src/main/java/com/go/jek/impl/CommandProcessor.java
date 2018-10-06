@@ -16,14 +16,13 @@ public class CommandProcessor {
     static {
 
         try {
-            System.out.println("Registering command: " + Class.forName(Create.class.getName()));
-            System.out.println("Registering command: " + Class.forName(Park.class.getName()));
-            System.out.println("Registering command: " + Class.forName(Leave.class.getName()));
-            System.out.println("Registering command: " + Class.forName(Status.class.getName()));
-            System.out.println("Registering command: " + Class.forName(SearchRNWithColor.class.getName()));
-            System.out.println("Registering command: " + Class.forName(SearchSNWithColor.class.getName()));
-            System.out.println("Registering command: " + Class.forName(SearchSNWithRN.class.getName()));
-            System.out.println("Commands are successfully registered!");
+            Class.forName(Create.class.getName());
+            Class.forName(Park.class.getName());
+            Class.forName(Leave.class.getName());
+            Class.forName(Status.class.getName());
+            Class.forName(SearchRNWithColor.class.getName());
+            Class.forName(SearchSNWithColor.class.getName());
+            Class.forName(SearchSNWithRN.class.getName());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

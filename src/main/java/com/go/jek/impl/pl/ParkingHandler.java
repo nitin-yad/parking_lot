@@ -121,5 +121,9 @@ public class ParkingHandler {
         return new LinkedList<Slot>(occupiedSlots);
     }
 
+    public Integer getParkingCapacity(){
+
+        return parkingCapacity;
+    }
 
 }
